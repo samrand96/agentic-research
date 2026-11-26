@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "paper-search": {
+      "command": "uvx",
+      "args": ["paper-search-mcp"],
+      "env": {
+        "PAPER_SEARCH_MCP_UNPAYWALL_EMAIL": "PASTE-AN-EMAIL-YOU-CHOOSE",
+        "PAPER_SEARCH_MCP_CORE_API_KEY": "PASTE-YOUR-CORE-KEY-OR-DELETE-THIS-LINE",
+        "PAPER_SEARCH_MCP_SEMANTIC_SCHOLAR_API_KEY": "PASTE-YOUR-KEY-OR-DELETE-THIS-LINE"
+      }
+    },
+    "zotero": {
+      "command": "zotero-mcp",
+      "args": [],
+      "env": {
+        "ZOTERO_LOCAL": "true"
+      }
+    }
+  }
+}

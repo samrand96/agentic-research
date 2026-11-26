@@ -1,0 +1,21 @@
+# Example for ~/.codex/config.toml (Codex settings for ALL your projects).
+# On Windows, ~ means C:\Users\<you>. Create the .codex folder if it is not there.
+# Keys are not written here: env_vars passes them in from your environment variables.
+# Docs: https://learn.chatgpt.com/docs/extend/mcp
+
+[mcp_servers.paper-search]
+command = "uvx"
+args = ["paper-search-mcp"]
+env_vars = [
+  "PAPER_SEARCH_MCP_UNPAYWALL_EMAIL",
+  "PAPER_SEARCH_MCP_SEMANTIC_SCHOLAR_API_KEY",
+  "PAPER_SEARCH_MCP_CORE_API_KEY",
+  "PAPER_SEARCH_MCP_OPENALEX_API_KEY",
+]
+
+[mcp_servers.zotero]
+command = "zotero-mcp"
+args = []
+
+[mcp_servers.zotero.env]
+ZOTERO_LOCAL = "true"

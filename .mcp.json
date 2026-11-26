@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "paper-search": {
+      "command": "uvx",
+      "args": [
+        "paper-search-mcp"
+      ],
+      "env": {
+        "PAPER_SEARCH_MCP_UNPAYWALL_EMAIL": "${PAPER_SEARCH_MCP_UNPAYWALL_EMAIL:-}",
+        "PAPER_SEARCH_MCP_SEMANTIC_SCHOLAR_API_KEY": "${PAPER_SEARCH_MCP_SEMANTIC_SCHOLAR_API_KEY:-}",
+        "PAPER_SEARCH_MCP_CORE_API_KEY": "${PAPER_SEARCH_MCP_CORE_API_KEY:-}",
+        "PAPER_SEARCH_MCP_OPENALEX_API_KEY": "${PAPER_SEARCH_MCP_OPENALEX_API_KEY:-}",
+        "PAPER_SEARCH_MCP_OPENALEX_EMAIL": "${PAPER_SEARCH_MCP_OPENALEX_EMAIL:-}",
+        "PAPER_SEARCH_MCP_WOS_API_KEY": "${PAPER_SEARCH_MCP_WOS_API_KEY:-}",
+        "PAPER_SEARCH_MCP_SCOPUS_API_KEY": "${PAPER_SEARCH_MCP_SCOPUS_API_KEY:-}",
+        "PAPER_SEARCH_MCP_IEEE_API_KEY": "${PAPER_SEARCH_MCP_IEEE_API_KEY:-}"
+      }
+    },
+    "zotero": {
+      "command": "zotero-mcp",
+      "args": [],
+      "env": {
+        "ZOTERO_LOCAL": "true"
+      }
+    }
+  }
+}

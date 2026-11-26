@@ -1,0 +1,69 @@
+# ---------------------------------------------------------------
+# .gitignore for a research project
+# Lines starting with # are comments. Each other line is a pattern
+# for files git should NOT track or upload to GitHub.
+# ---------------------------------------------------------------
+
+# Secrets: never commit these
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
+credentials*.json
+
+# Personal Claude notes for this project (keep them local)
+CLAUDE.local.md
+.claude/settings.local.json
+
+# Data: raw and processed data stay on your computer (and in your
+# institution's approved storage), not in git
+data/raw/*
+data/processed/*
+!data/raw/README.md
+!data/processed/README.md
+
+# Large or private files
+*.sav
+*.dta
+*.zip
+*.mp3
+*.m4a
+*.wav
+*.mp4
+
+# Paper PDFs you downloaded (copyright belongs to the publishers)
+references/pdfs/
+
+# Office lock and temporary files
+~$*
+*.tmp
+.~lock.*
+
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+
+# Operating systems
+.DS_Store
+Thumbs.db
+desktop.ini
