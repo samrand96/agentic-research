@@ -5,9 +5,11 @@
 这是一套开箱即用的入门工具包，帮助你借助 AI 助手完成科研：**从研究问题一直到投稿**，同时始终掌控你的文献、数据和结果。
 它同时支持 **Claude Code**（Anthropic 公司）和 **Codex**（OpenAI 公司）：用其中一个或两个都用都可以。
 
-你**不需要会编程**。所有步骤都可以用桌面应用完成；指南里的命令行只是可选项。
+你**不需要会编程**：只需安装几个应用，再粘贴三条简短的命令，下面有一步一步的说明。
 适用于任何学科的学生和研究者。
 文中所有信息均于 **2026 年 11 月 26 日**在各工具的官方页面核实。
+
+**第一次使用？直接看 [一步一步安装所有工具](#一步一步安装所有工具)。**
 
 ---
 
@@ -40,58 +42,165 @@
 
 两者在本仓库中都已配置好。你可以随时切换，也可以让一个助手检查另一个的工作。
 
-## 本仓库里有什么
+## 一步一步安装所有工具
 
-本仓库**本身就是**项目模板：一份副本 = 一篇论文。
+**每台电脑只需做一次**，大约 30–45 分钟。不需要任何编程知识：你只需要点击安装程序，再粘贴**三条简短的命令**。
+
+### 要安装什么，为什么
+
+| 工具 | 用途 | 是否需要 |
+|---|---|---|
+| **Claude 桌面应用** 和/或 **ChatGPT 桌面应用** | 你的 AI 助手（Claude Code 在 Claude 应用里；Codex 在 ChatGPT 应用里） | 需要，至少一个 |
+| **Zotero 10** + **Zotero Connector** | 文献库，以及在浏览器里一键保存论文的按钮 | 需要 |
+| **Better BibTeX**（Zotero 插件） | 为每篇论文生成稳定的引用键 | 需要 |
+| **uv** | 运行插件的小工具；需要时会自动下载 Python | 需要 |
+| **Zotero 插件**（zotero-mcp） | 让助手读取你的 Zotero 文献库 | 需要 |
+| **GitHub 账号** + **GitHub Desktop** | 保存工作的每一个版本，用按钮代替命令 | 推荐 |
+| **茉莉花 Jasminum**（Zotero 插件） | 保存知网、万方、维普的中文论文 | 仅中文文献需要 |
+
+**不需要安装 Python。** 插件需要时，uv 会自动下载。
+**不需要 Node.js**，除非你以后想用 Codex 的命令行版本。
+**论文检索插件不需要安装：** 助手第一次使用时，uv 会自动获取它。
+
+### 开始之前：如何粘贴命令
+
+只有三条命令需要用到这个方法。
+
+- **Windows：** 按 **Windows 键**，输入 **PowerShell**，点击 **Windows PowerShell**，会出现一个文字窗口。
+  从本页复制命令，在窗口里**点击鼠标右键**（即粘贴），然后按 **回车键**。
+- **Mac：** 按 **Cmd + 空格**，输入 **终端**（或 **Terminal**），按回车。从本页复制命令，在窗口里按 **Cmd + V**，然后按回车。
+- 每装完一样东西，**关闭窗口，再打开一个新窗口**，然后再做下一步。新安装的程序只有在新窗口里才能找到。
+
+---
+
+### Windows
+
+**第 1 步 — AI 助手应用**（Windows 10 或更高版本）
+
+- **Claude：** 打开 https://claude.com/download ，下载 Windows 版本，安装并登录。Claude Code 就是 **Code** 标签页，需要 Claude 付费套餐（Pro 或以上）。
+- **ChatGPT（用于 Codex）：** 在 Microsoft Store 中安装 **ChatGPT**（或见 https://learn.chatgpt.com/docs/app ），然后登录。Codex 包含在 ChatGPT 各套餐中，包括免费版。
+
+**第 2 步 — Zotero 10 和 Zotero Connector**
+
+1. 打开 https://www.zotero.org/download/ ，下载 **Zotero for Windows** 并安装。
+2. 在同一页面，点击按钮为你的浏览器（Chrome、Edge 或 Firefox）安装 **Zotero Connector**。
+3. 打开 Zotero → **编辑 → 设置 → 高级** → 勾选 **“允许此计算机上的其他应用程序与 Zotero 通信”**
+   （英文界面：Edit → Settings → Advanced → “Allow other applications on this computer to communicate with Zotero”）。
+
+**第 3 步 — Better BibTeX**
+
+1. 打开 https://github.com/retorquere/zotero-better-bibtex/releases/latest ，在 **Assets** 下载以 **.xpi** 结尾的文件。
+   （用 Firefox 的话：右键点击文件 → **链接另存为…**，否则 Firefox 会尝试自己安装它。）
+2. 在 Zotero 中：**工具 → 插件**（Tools → Plugins）→ 点击右上角的**齿轮**图标 → **从文件安装插件…**（Install Plugin From File…）→ 选择 .xpi 文件 → **安装**（Install）。
+3. *中文文献：* 用同样的方法安装茉莉花的 .xpi 文件：https://github.com/l0o0/jasminum/releases 。中文说明：https://zotero-chinese.com
+
+**第 4 步 — uv**（第 1 条命令，共 3 条）
+
+打开 **PowerShell**，粘贴下面这一整行，然后按回车：
 
 ```
-agentic-research/
-├── README.md                 英文说明                   README.zh-CN.md  本文件
-├── AGENTS.md                 所有助手都会读取的规则（填写方括号 [ ] 中的内容）
-├── CLAUDE.md                 让 Claude Code 加载 AGENTS.md
-├── .mcp.json                 Claude Code 的插件设置（不含密钥）
-├── .codex/config.toml        Codex 的插件设置（不含密钥）
-├── .claude/skills/           给 Claude Code 的 4 个科研技能
-├── .agents/skills/           给 Codex 的同样 4 个技能
-├── .gitignore  .env.example  防止密钥和原始数据被上传；列出密钥的名称
-├── setup-guides/             分步指南 01–08（英文）和设置示例
-├── docs/plans/  status/      研究计划，以及每个任务一份进度文件
-├── docs/protocol/            在看结果之前冻结的分析方案
-├── docs/literature/          检索记录、已核实的参考文献、创新性检查
-├── docs/reports/             结果报告，每个都由脚本生成
-└── paper/ data/ analysis/ references/ figures/
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-分步指南特意放在项目里：AI 助手可以读取它们，所以你可以直接问助手，例如：*“请帮我完成 setup-guides/01-install.md 的第 3 步。”*
+关闭 PowerShell，打开一个新的，输入 `uv --version` 并按回车，应该会显示一个版本号。
 
-以点开头的文件和文件夹（如 `.mcp.json`、`.codex`、`.claude`、`.agents`）在有些电脑上是隐藏的。
-Windows 文件资源管理器：查看 → 显示 → 隐藏的项目。Mac 访达：按 Cmd + Shift + .（句点）。
+**第 5 步 — Zotero 插件**（第 2、3 条命令）
 
-## 什么是 “.md” 文件？
+在 PowerShell 中逐行粘贴下面两行，每行后按回车：
 
-以 **.md**（Markdown）结尾的文件就是普通的文本文件，不需要特别的软件：
+```
+uv tool install zotero-mcp-server
+uv tool update-shell
+```
 
-- **Windows：** 右键点击文件 → 打开方式 → **记事本**。
-- **Mac：** 右键点击文件 → 打开方式 → **文本编辑**。
-- **最简单：** 让助手帮你，例如：*“和我一起填写 AGENTS.md，每次只问我一个问题。”*
+关闭 PowerShell，打开一个新的，输入 `uv tool list` 并按回车：列表中应该有 **zotero-mcp-server**。
 
-行首的 `#` 表示标题，`-` 表示列表项，两个 `**` 之间的文字是粗体。就这么简单。
+**第 6 步 — GitHub**（推荐）
 
-## 从这里开始（第一次大约需要一小时）
+1. 在 https://github.com/signup 注册免费账号。
+2. 从 https://github.com/apps/desktop 安装 **GitHub Desktop**，并用这个账号登录。
 
-1. **安装应用**：Claude 桌面应用和/或 ChatGPT 桌面应用、GitHub Desktop、Zotero 10，以及 uv（一行命令）。见 `setup-guides/01-install.md`。
-2. **登录**。Codex 包含在所有 ChatGPT 套餐中，免费版也可以用；Claude Code 需要 Claude 付费套餐。
-3. **为 Zotero 安装 Better BibTeX**，并允许其他应用与 Zotero 通信。需要中文文献的话，再安装**茉莉花（Jasminum）**插件。见 `setup-guides/04-zotero.md`。
-4. **为每篇论文准备一份副本**：在 GitHub 上点击 **Use this template** → **Create a new repository**（设为**私有**），或点击 **Code → Download ZIP** 并解压。用论文名称命名，例如 `my-paper`。
-5. **填写** `AGENTS.md`：研究问题、目标期刊、写作风格和规则。
-6. **申请免费的 API 密钥**，保存为环境变量：见下文和 `setup-guides/08-api-keys.md`。
-7. **安装一次 Zotero 插件**：`uv tool install zotero-mcp-server`。
-8. **在助手中打开文件夹**。Claude：Code 标签页 → 打开文件夹，批准项目的插件。
-   Codex：在 ChatGPT 应用中打开文件夹；项目的插件设置只在“受信任”的文件夹中生效，如果 Codex 询问，请选择信任。
-   输入 `/mcp` 检查插件是否已连接。
-9. **打开“安全网”**：用 GitHub Desktop 添加文件夹、第一次提交（commit）、发布为私有仓库（见 `setup-guides/02-git-and-github.md`）。
-10. **布置第一个任务**，例如（中英文都可以）：
-    *“请阅读 AGENTS.md 和研究计划，然后用 literature-review 技能为 WP1.1 制定检索方案，把方案写进检索记录，然后停下来等我确认。”*
+**第 7 步 — 重启 AI 应用**
+
+完全退出 Claude 或 ChatGPT 应用，再重新打开，这样它才能找到 uv 和 Zotero 插件。
+
+---
+
+### Mac
+
+**第 1 步 — AI 助手应用**
+
+- **Claude：** 打开 https://claude.com/download ，下载 Mac 版本（需要 macOS 13 Ventura 或更高版本），拖到“应用程序”文件夹，打开并登录。Claude Code 就是 **Code** 标签页（需要 Claude 付费套餐，Pro 或以上）。
+- **ChatGPT（用于 Codex）：** 从 https://learn.chatgpt.com/docs/app 下载 Mac 应用（下载的是 Apple 芯片 Mac 的版本），然后登录。Codex 包含在 ChatGPT 各套餐中，包括免费版。
+
+**第 2 步 — Zotero 10 和 Zotero Connector**
+
+1. 打开 https://www.zotero.org/download/ ，下载 **Zotero for Mac**，打开后把 Zotero 拖到“应用程序”。
+2. 在同一页面为你的浏览器安装 **Zotero Connector**（Safari 的已经包含在 Zotero 里）。
+3. 打开 Zotero → **Zotero → 设置 → 高级**（Zotero → Settings → Advanced）→ 勾选 **“允许此计算机上的其他应用程序与 Zotero 通信”**
+   （“Allow other applications on this computer to communicate with Zotero”）。
+
+**第 3 步 — Better BibTeX**
+
+与 Windows 第 3 步相同：从 https://github.com/retorquere/zotero-better-bibtex/releases/latest 下载 **.xpi** 文件，
+然后在 Zotero 中 **工具 → 插件** → **齿轮** → **从文件安装插件…**。中文文献：同样安装茉莉花。
+
+**第 4 步 — uv**（第 1 条命令，共 3 条）
+
+打开 **终端**，粘贴下面这一行，然后按回车：
+
+```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+关闭终端，打开一个新的，输入 `uv --version` 并按回车，应该会显示一个版本号。
+
+**第 5 步 — Zotero 插件**（第 2、3 条命令）
+
+```
+uv tool install zotero-mcp-server
+uv tool update-shell
+```
+
+关闭终端，打开一个新的，输入 `uv tool list`：列表中应该有 **zotero-mcp-server**。
+
+**第 6 步 — GitHub**（推荐）
+
+在 https://github.com/signup 注册免费账号，然后从 https://github.com/apps/desktop 安装 **GitHub Desktop**（需要 macOS 12 或更高版本）并登录。
+如果 Mac 提示安装 **“命令行开发者工具”**，点击 **安装** 即可：那是苹果提供的 Git。
+
+**第 7 步 — 重启 AI 应用**
+
+完全退出 Claude 或 ChatGPT 应用（Cmd + Q），再重新打开。
+
+---
+
+### 遇到问题怎么办
+
+| 你看到的情况 | 怎么做 |
+|---|---|
+| 提示 `uv` 或 `zotero-mcp` “无法识别” / “command not found” | 关闭窗口，打开一个新窗口。还不行？重启电脑。 |
+| Windows 提示禁止运行脚本 | 复制第 4 步中 uv 的**整行**命令，包括 `powershell -ExecutionPolicy ByPass`。 |
+| 助手看不到 Zotero | Zotero 是否已打开？第 2 步的“允许其他应用程序……”是否已勾选？重启 AI 应用。 |
+| 其他问题 | 复制错误信息，问你的助手：*“我在安装时遇到了这个错误，该怎么办？”* |
+
+各步骤的官方页面：uv https://docs.astral.sh/uv/getting-started/installation/ ·
+Zotero https://www.zotero.org/download/ · Better BibTeX https://retorque.re/zotero-better-bibtex/installation/ ·
+Zotero 插件 https://github.com/54yyyu/zotero-mcp · GitHub Desktop https://docs.github.com/en/desktop
+
+## 开始使用（每篇新论文）
+
+1. **获取你自己的副本：** 在本 GitHub 页面点击 **Use this template** → **Create a new repository**（设为**私有**），
+   然后在 GitHub Desktop 中用 **Clone repository** 把它下载到电脑上。
+   没有 GitHub？点击 **Code → Download ZIP** 并解压。用论文名称命名，例如 `my-paper`。
+2. **在助手中打开文件夹。** Claude：打开 **Code** 标签页并选择该文件夹，提示时批准项目的插件。
+   Codex：在 ChatGPT 应用中打开该文件夹；如果询问是否信任该文件夹，请选择信任（插件只在受信任的文件夹中生效）。
+3. **检查插件：** 输入 `/mcp`，应该能看到 **paper-search** 和 **zotero**。
+4. **填写 `AGENTS.md`**，最简单的方法是让助手帮你：*“和我一起填写 AGENTS.md，每次只问我一个问题。”*
+5. **可选：申请免费的 API 密钥**，让论文检索更快（见下文）。
+6. **布置第一个任务**，例如（中英文都可以）：
+   *“请阅读 AGENTS.md 和研究计划，然后用 literature-review 技能为 WP1.1 制定检索方案，把方案写进检索记录，然后停下来等我确认。”*
+7. **保存版本：** 在 GitHub Desktop 中写一句简短说明，点击 **Commit to main**，然后点击 **Push origin**。
 
 ## API 密钥在哪里申请
 
@@ -139,6 +248,43 @@ export PAPER_SEARCH_MCP_OPENALEX_API_KEY="在这里粘贴你的密钥"
 
 **检查是否成功**（在新终端中）：Windows 输入 `echo $env:PAPER_SEARCH_MCP_CORE_API_KEY`，Mac 输入 `echo $PAPER_SEARCH_MCP_CORE_API_KEY`，
 应该会显示你的密钥。然后在 Claude Code 或 Codex 中输入 `/mcp`。
+
+## 本仓库里有什么
+
+本仓库**本身就是**项目模板：一份副本 = 一篇论文。
+
+```
+agentic-research/
+├── README.md                 英文说明                   README.zh-CN.md  本文件
+├── AGENTS.md                 所有助手都会读取的规则（填写方括号 [ ] 中的内容）
+├── CLAUDE.md                 让 Claude Code 加载 AGENTS.md
+├── .mcp.json                 Claude Code 的插件设置（不含密钥）
+├── .codex/config.toml        Codex 的插件设置（不含密钥）
+├── .claude/skills/           给 Claude Code 的 4 个科研技能
+├── .agents/skills/           给 Codex 的同样 4 个技能
+├── .gitignore  .env.example  防止密钥和原始数据被上传；列出密钥的名称
+├── setup-guides/             分步指南 01–08（英文）和设置示例
+├── docs/plans/  status/      研究计划，以及每个任务一份进度文件
+├── docs/protocol/            在看结果之前冻结的分析方案
+├── docs/literature/          检索记录、已核实的参考文献、创新性检查
+├── docs/reports/             结果报告，每个都由脚本生成
+└── paper/ data/ analysis/ references/ figures/
+```
+
+分步指南特意放在项目里：AI 助手可以读取它们，所以你可以直接问助手，例如：*“请帮我完成 setup-guides/01-install.md 的第 3 步。”*
+
+以点开头的文件和文件夹（如 `.mcp.json`、`.codex`、`.claude`、`.agents`）在有些电脑上是隐藏的。
+Windows 文件资源管理器：查看 → 显示 → 隐藏的项目。Mac 访达：按 Cmd + Shift + .（句点）。
+
+## 什么是 “.md” 文件？
+
+以 **.md**（Markdown）结尾的文件就是普通的文本文件，不需要特别的软件：
+
+- **Windows：** 右键点击文件 → 打开方式 → **记事本**。
+- **Mac：** 右键点击文件 → 打开方式 → **文本编辑**。
+- **最简单：** 让助手帮你，例如：*“和我一起填写 AGENTS.md，每次只问我一个问题。”*
+
+行首的 `#` 表示标题，`-` 表示列表项，两个 `**` 之间的文字是粗体。就这么简单。
 
 ## 典型的科研流程
 

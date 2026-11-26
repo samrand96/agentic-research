@@ -1,5 +1,12 @@
 # 1. Install the tools
 
+> **New to all this?** The simplest, click-by-click instructions for Windows and Mac are in the main
+> [README](../README.md#install-everything-step-by-step) (中文：[README.zh-CN](../README.zh-CN.md#一步一步安装所有工具)).
+> This page has more options and details.
+>
+> **You do not need to install Python:** uv downloads it automatically when needed.
+> After installing a tool with `uv tool install`, run `uv tool update-shell` once and open a new terminal.
+
 Checked on the official pages on **26 November 2026**. Install commands change; if one fails, open the
 link next to it and use what the page says today.
 
